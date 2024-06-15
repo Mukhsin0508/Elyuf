@@ -105,7 +105,6 @@ __pycache__/
 
 # Virtual environment
 elyufranks/
-data/
 
 # IDE-specific files
 .vscode/
