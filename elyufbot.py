@@ -1,6 +1,8 @@
 import logging
 import os
 from data import load_data
+from pymongo import MongoClient
+import certifi
 import pickle
 from telegram import Update
 from telegram.ext import (
@@ -14,90 +16,93 @@ from telegram.ext import (
 )
 import dotenv
 
+# Load environment variables
 dotenv.load_dotenv()
 
-TOKEN: str = os.getenv("TOKEN")
-BOT_USERNAME: str = os.getenv("BOT_USERNAME")
+# Telegram bot and MongoDB configuration
+TOKEN = os.getenv("TOKEN")
+BOT_USERNAME = os.getenv("BOT_USERNAME")
+MONGODB_URI = os.getenv("MONGO_CLIENT")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID"))
 
+# MongoDB connection
+ca_cert_path = certifi.where()
+client = MongoClient(MONGODB_URI, tlsCAFile=ca_cert_path)
+db = client["elyufbot"]
+collection = db["users"]
+
+# Logging setup
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 logger = logging.getLogger(__name__)
 
+# Conversation states
 START, NAME, PHONE, ADMIN, NEW_REGISTRATION = range(5)
 
-user_data = {}
+# Global variables to store user data
 registered_users = []
-admin_password ="ADMIN_PASSWORD"
-admin_user_id = "ADMIN_USER_ID"
+user_data = {}
 
-# File to save registered users data
-DATA_FILE = "registered_users.pkl"
-
-
-def save_registered_users():
-    with open(DATA_FILE, "wb") as f:
-        pickle.dump((registered_users, user_data), f)
-
-
+# Load registered users from MongoDB
 def load_registered_users():
     global registered_users, user_data
-    if os.path.exists(DATA_FILE) and os.path.getsize(DATA_FILE) > 0:
-        with open(DATA_FILE, "rb") as f:
-            registered_users, user_data = pickle.load(f)
-    else:
-        registered_users = []
-        user_data = {}
+    registered_users = [doc["_id"] for doc in collection.find()]
+    user_data = {doc["_id"]: doc for doc in collection.find()}
 
-
+# Function to start the conversation
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.message.from_user.id
+    user_username = update.message.from_user.username
     if user_id in registered_users:
         await update.message.reply_text(
-            "You are already registered! Which university you want to look up?"
+            "You are already registered! Which university do you want to look up?"
         )
         return ConversationHandler.END
 
-    user_data[user_id] = {}
+    user_data[user_id] = {"username": user_username}
     await update.message.reply_text("Welcome! Please enter your name:")
     return NAME
 
-
+# Function to handle name input
 async def name(update: Update, context: CallbackContext):
     user_id = update.message.from_user.id
     user_data[user_id]["name"] = update.message.text
+    
     await update.message.reply_text("Please enter your phone number:")
     return PHONE
 
-
+# Function to handle phone number input
 async def phone(update: Update, context: CallbackContext):
     user_id = update.message.from_user.id
     user_data[user_id]["phone"] = update.message.text
-    await update.message.reply_text("Thank you, Which university you want to look up?")
+    
+    collection.update_one({"_id": user_id}, {"$set": user_data[user_id]}, upsert=True)
     registered_users.append(user_id)
-    save_registered_users()  # Save data after registration
+    
+    await update.message.reply_text("Thank you! Which university do you want to look up?")
     return ConversationHandler.END
 
-
+# Function to handle admin authentication
 async def admin_id(update: Update, context: CallbackContext):
     user_id = update.message.from_user.id
-    if user_id == admin_user_id:
+    if user_id == ADMIN_USER_ID:
         await update.message.reply_text("Please enter the admin password:")
         return ADMIN
     else:
+        await update.message.reply_text("You are not authorized to perform this action.")
         return ConversationHandler.END
-
-
+    
+# Function to verify admin password
 async def admin_password(update: Update, context: CallbackContext):
-    user_id = update.message.from_user.id
     password = update.message.text
-    if password == admin_password:
+    if password == ADMIN_PASSWORD:
         await update.message.reply_text("Welcome, admin!")
         return NEW_REGISTRATION
     else:
         await update.message.reply_text("Incorrect password.")
         return ConversationHandler.END
-
 
 # Load registered users data
 load_registered_users()
@@ -109,17 +114,17 @@ try:
 except Exception as e:
     print(f"Error loading data: {e}")
 
-
+# Command to provide help
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("I am Elyuf Ranker! How can I help?")
 
-
+# Command to restart the bot
 async def restart_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "I finished restarting myself! Is there any university you want to look up!?"
     )
 
-
+# Function to handle message responses
 def handle_response(text: str, qs_data, times_data, us_news_data) -> str:
     university = text.strip().lower()
     response = []
@@ -151,7 +156,7 @@ def handle_response(text: str, qs_data, times_data, us_news_data) -> str:
 
     return "\n".join(response)
 
-
+# Function to handle messages
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message_type: str = update.message.chat.type
     text: str = update.message.text
@@ -175,11 +180,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     print("Bot:", response)
     await update.message.reply_text(response)
 
-
+# Function to handle errors
 async def error(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    print(f"Update {update} caused error {context.error}")
+    logger.error(f"Update {update} caused error {context.error}")
 
-
+# Main function to start the bot
 if __name__ == "__main__":
     print("Starting bot...")
     app = Application.builder().token(TOKEN).build()
