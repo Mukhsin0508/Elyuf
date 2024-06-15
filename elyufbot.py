@@ -24,7 +24,7 @@ TOKEN = os.getenv("TOKEN")
 BOT_USERNAME = os.getenv("BOT_USERNAME")
 MONGODB_URI = os.getenv("MONGO_CLIENT")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
-ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID"))
+ADMIN_USER_ID = os.getenv("ADMIN_USER_ID")
 
 # MongoDB connection
 ca_cert_path = certifi.where()
