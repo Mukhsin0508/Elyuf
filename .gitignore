@@ -105,7 +105,6 @@ __pycache__/
 
 # Virtual environment
 elyufranks/
-.env
 data/
 
 # IDE-specific files
