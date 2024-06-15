@@ -157,6 +157,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+macOS/
 
 # Translations
 *.mo
