@@ -1,0 +1,1501 @@
+{
+		"data": [
+			{
+				"rank": 1,
+				"university": "Harvard University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 2,
+				"university": "Massachusetts Institute of Technology",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 3,
+				"university": "Stanford University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 4,
+				"university": "University of California Berkeley",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 5,
+				"university": "University of Oxford",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 6,
+				"university": "University of Washington",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 7,
+				"university": "Columbia University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 8,
+				"university": "University of Cambridge",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 9,
+				"university": "California Institute of Technology",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 10,
+				"university": "Johns Hopkins University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 11,
+				"university": "Yale University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 12,
+				"university": "University College London",
+				"country": "БуюкБритания"
+			},
+			{
+				"rank": 13,
+				"university": "Imperial College London",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 14,
+				"university": "University of California Los-Angeles",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 15,
+				"university": "University of Pennsylvania",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 16,
+				"university": "Princeton University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 17,
+				"university": "University of California San Francisco",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 18,
+				"university": "University of Toronto",
+				"country": "Канада"
+			},
+			{
+				"rank": 19,
+				"university": "University of Michigan",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 20,
+				"university": "University of California San Diego",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 21,
+				"university": "Cornell University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 22,
+				"university": "University of Chicago",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 23,
+				"university": "Tsinghua University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 24,
+				"university": "Northwestern University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 25,
+				"university": "Duke University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 26,
+				"university": "National University of Singapore",
+				"country": "Сингапур"
+			},
+			{
+				"rank": 27,
+				"university": "University of Melbourne",
+				"country": "Австралия"
+			},
+			{
+				"rank": 28,
+				"university": "University of Sydney",
+				"country": "Австралия"
+			},
+			{
+				"rank": 29,
+				"university": "ETH Zurich",
+				"country": "Швейцария"
+			},
+			{
+				"rank": 30,
+				"university": "Nanyang Technological University",
+				"country": "Сингапур"
+			},
+			{
+				"rank": 31,
+				"university": "New York University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 32,
+				"university": "Washington University (WUSTL)",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 33,
+				"university": "King's College London",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 34,
+				"university": "University of Edinburgh",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 35,
+				"university": "University of British Columbia",
+				"country": "Канада"
+			},
+			{
+				"rank": 36,
+				"university": "University of Queensland Australia",
+				"country": "Австралия"
+			},
+			{
+				"rank": 37,
+				"university": "Monash University",
+				"country": "Австралия"
+			},
+			{
+				"rank": 38,
+				"university": "University of New South Wales Sydney",
+				"country": "Австралия"
+			},
+			{
+				"rank": 39,
+				"university": "Peking University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 40,
+				"university": "University of Amsterdam",
+				"country": "Голландия"
+			},
+			{
+				"rank": 41,
+				"university": "University of North Carolina Chapel Hill",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 42,
+				"university": "University of Copenhagen",
+				"country": "Дания"
+			},
+			{
+				"rank": 43,
+				"university": "University of Texas",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 44,
+				"university": "Utrecht University",
+				"country": "Нидерландия"
+			},
+			{
+				"rank": 45,
+				"university": "University of Pittsburgh",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 46,
+				"university": "Icahn School of Medicine",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 47,
+				"university": "University of Munich",
+				"country": "Германия"
+			},
+			{
+				"rank": 48,
+				"university": "Sorbonne Universite",
+				"country": "Франция"
+			},
+			{
+				"rank": 48,
+				"university": "Université de Paris",
+				"country": "Франция"
+			},
+			{
+				"rank": 50,
+				"university": "KU Leuven",
+				"country": "Белгия"
+			},
+			{
+				"rank": 51,
+				"university": "Georgia Institute of Technology",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 51,
+				"university": "Karolinska Institutet",
+				"country": "Швеция"
+			},
+			{
+				"rank": 53,
+				"university": "Chinese University of Hong Kong",
+				"country": "Хитой"
+			},
+			{
+				"rank": 54,
+				"university": "McGill University",
+				"country": "Канада"
+			},
+			{
+				"rank": 55,
+				"university": "Ohio State University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 55,
+				"university": "University of Hong Kong",
+				"country": "Гонконг"
+			},
+			{
+				"rank": 57,
+				"university": "Ruprecht Karls University Heidelberg",
+				"country": "Германия"
+			},
+			{
+				"rank": 57,
+				"university": "University of Maryland College Park",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 58,
+				"university": "University of Minnesota Twin Cities",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 60,
+				"university": "Universite Paris Saclay",
+				"country": "Франция"
+			},
+			{
+				"rank": 61,
+				"university": "Humboldt University of Berlin",
+				"country": "Германия"
+			},
+			{
+				"rank": 62,
+				"university": "Australian National University",
+				"country": "Австралия"
+			},
+			{
+				"rank": 63,
+				"university": "University of Manchester",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 63,
+				"university": "University of Wisconsin Madison",
+				"country": "Швейцария"
+			},
+			{
+				"rank": 65,
+				"university": "Erasmus University Rotterdam",
+				"country": "Голландия"
+			},
+			{
+				"rank": 65,
+				"university": "King Abdulaziz University",
+				"country": "Саудия Арабистони"
+			},
+			{
+				"rank": 67,
+				"university": "University of California Santa Barbara",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 67,
+				"university": "University of Zurich",
+				"country": "Швейцария"
+			},
+			{
+				"rank": 69,
+				"university": "École Polytechnique Federale of Lausanne",
+				"country": "Швейцария"
+			},
+			{
+				"rank": 70,
+				"university": "Boston University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 70,
+				"university": "University of Colorado Boulder",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 72,
+				"university": "Emory University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 73,
+				"university": "University of California Davis",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 74,
+				"university": "Leiden University",
+				"country": "Голландия"
+			},
+			{
+				"rank": 74,
+				"university": "University of Adelaide",
+				"country": "Австралия"
+			},
+			{
+				"rank": 74,
+				"university": "University of Glasgow",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 74,
+				"university": "University of Illinois Urbana-Champaign",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 78,
+				"university": "Vanderbilt University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 79,
+				"university": "Technical University of Munich",
+				"country": "Германия"
+			},
+			{
+				"rank": 80,
+				"university": "University of Southern California",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 81,
+				"university": "University of Tokyo",
+				"country": "Япония"
+			},
+			{
+				"rank": 82,
+				"university": "Vrije Universiteit Amsterdam",
+				"country": "Гонконг"
+			},
+			{
+				"rank": 83,
+				"university": "University of Western Australia",
+				"country": "Австралия"
+			},
+			{
+				"rank": 84,
+				"university": "Pennsylvania State University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 84,
+				"university": "University of California Irvine",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 86,
+				"university": "University of Barcelona",
+				"country": "Испания"
+			},
+			{
+				"rank": 87,
+				"university": "Free University of Berlin",
+				"country": "Германия"
+			},
+			{
+				"rank": 88,
+				"university": "University of Groningen",
+				"country": "Нидерландия"
+			},
+			{
+				"rank": 89,
+				"university": "Shanghai Jiao Tong University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 89,
+				"university": "University of Birmingham",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 89,
+				"university": "University of Oslo",
+				"country": "Норвегия"
+			},
+			{
+				"rank": 89,
+				"university": "Wageningen University & Research",
+				"country": "Нидерландия"
+			},
+			{
+				"rank": 93,
+				"university": "University of Bristol",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 93,
+				"university": "Zhejiang University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 95,
+				"university": "Ghent University",
+				"country": "Белгия"
+			},
+			{
+				"rank": 95,
+				"university": "Hong Kong University of Science & Technology",
+				"country": "Гонконг"
+			},
+			{
+				"rank": 95,
+				"university": "King Abdullah University of Science and Technology",
+				"country": "Саудия Арабистони"
+			},
+			{
+				"rank": 98,
+				"university": "University of Florida",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 99,
+				"university": "University of Helsinki",
+				"country": "Финляндия"
+			},
+			{
+				"rank": 100,
+				"university": "Hong Kong Polytechnic University",
+				"country": "Гонконг"
+			},
+			{
+				"rank": 100,
+				"university": "Queen Mary University London",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 102,
+				"university": "University of Science & Technology of China",
+				"country": "Хитой"
+			},
+			{
+				"rank": 103,
+				"university": "Rockefeller University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 104,
+				"university": "University of Southampton",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 105,
+				"university": "University of California Santa Cruz",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 106,
+				"university": "Radboud University Nijmegen",
+				"country": "Нидерландия"
+			},
+			{
+				"rank": 107,
+				"university": "University of Bern",
+				"country": "Швейцария"
+			},
+			{
+				"rank": 108,
+				"university": "Michigan State University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 108,
+				"university": "The University of Arizona",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 109,
+				"university": "Aarhus University",
+				"country": "Дания"
+			},
+			{
+				"rank": 109,
+				"university": "Huazhong University of Science & Technology",
+				"country": "Хитой"
+			},
+			{
+				"rank": 109,
+				"university": "University of Geneva",
+				"country": "Швейцария"
+			},
+			{
+				"rank": 112,
+				"university": "Lund University",
+				"country": "Швеция"
+			},
+			{
+				"rank": 112,
+				"university": "University of Chinese Academy of Sciences, CAS",
+				"country": "Хитой"
+			},
+			{
+				"rank": 112,
+				"university": "University of Technology Sydney",
+				"country": "Австралия"
+			},
+			{
+				"rank": 115,
+				"university": "University of Padua",
+				"country": "Италия"
+			},
+			{
+				"rank": 117,
+				"university": "Fudan University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 117,
+				"university": "Michigan State University",
+				"country": "АКШ"
+			},
+			{
+				"rank": 119,
+				"university": "Carnegie Mellon University",
+				"country": "АКШ"
+			},
+			{
+				"rank": 119,
+				"university": "University of Virginia",
+				"country": "АКШ"
+			},
+			{
+				"rank": 120,
+				"university": "City University of Hong Kong",
+				"country": "Гонконг"
+			},
+			{
+				"rank": 120,
+				"university": "Universidade de Sao Paulo",
+				"country": "Бразилия"
+			},
+			{
+				"rank": 123,
+				"university": "University of Bologna",
+				"country": "Италия"
+			},
+			{
+				"rank": 123,
+				"university": "Hong Kong Polytechnic University",
+				"country": "Гонконг"
+			},
+			{
+				"rank": 123,
+				"university": "Nanjing University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 124,
+				"university": "University of Auckland",
+				"country": "Янги Зелландия"
+			},
+			{
+				"rank": 125,
+				"university": "Sapienza University Rome",
+				"country": "Италия"
+			},
+			{
+				"rank": 125,
+				"university": "University of Cape Town",
+				"country": "Жанубий Африка"
+			},
+			{
+				"rank": 127,
+				"university": "Stockholm University",
+				"country": "Швеция"
+			},
+			{
+				"rank": 127,
+				"university": "Uppsala University",
+				"country": "Швеция"
+			},
+			{
+				"rank": 129,
+				"university": "Brown University",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 129,
+				"university": "London School of Hygiene and Tropical Medicine",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 129,
+				"university": "Seoul National University (SNU)",
+				"country": "Корея"
+			},
+			{
+				"rank": 129,
+				"university": "Sun Yat Sen University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 133,
+				"university": "University of Texas Southwestern Medical Center Dallas",
+				"country": "АКШ"
+			},
+			{
+				"rank": 134,
+				"university": "University of Sheffield",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 134,
+				"university": "Weizmann Institute of Science",
+				"country": "Исроил"
+			},
+			{
+				"rank": 136,
+				"university": "Baylor College of Medicine",
+				"country": "АКШ"
+			},
+			{
+				"rank": 136,
+				"university": "University of Alberta",
+				"country": "Канада"
+			},
+			{
+				"rank": 138,
+				"university": "McMaster University",
+				"country": "Канада"
+			},
+			{
+				"rank": 138,
+				"university": "University of Bonn",
+				"country": "Германия"
+			},
+			{
+				"rank": 140,
+				"university": "Kyoto University",
+				"country": "Япония"
+			},
+			{
+				"rank": 140,
+				"university": "Purdue University West Lafayette Campus",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 140,
+				"university": "University of Leeds",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 143,
+				"university": "Autonomous University of Barcelona",
+				"country": "Испания"
+			},
+			{
+				"rank": 143,
+				"university": "Rutgers State University New Brunswick",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 145,
+				"university": "University of Nottingham",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 146,
+				"university": "University of Gothenburg",
+				"country": "Швеция"
+			},
+			{
+				"rank": 146,
+				"university": "University of Liverpool",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 148,
+				"university": "Texas A&M University College Station",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 151,
+				"university": "University of Hamburg",
+				"country": "Германия"
+			},
+			{
+				"rank": 151,
+				"university": "University of Basel",
+				"country": "Швейцария"
+			},
+			{
+				"rank": 151,
+				"university": "Wuhan University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 151,
+				"university": "Cardiff University",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 155,
+				"university": "Case Western Reserve University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 156,
+				"university": "Indiana University Bloomington",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 156,
+				"university": "University of Exeter",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 156,
+				"university": "Arizona State University-Tempe",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 159,
+				"university": "Newcastle University - UK",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 159,
+				"university": "Universite de Montreal",
+				"country": "Канада"
+			},
+			{
+				"rank": 161,
+				"university": "University of Milan",
+				"country": "Италия"
+			},
+			{
+				"rank": 161,
+				"university": "Curtin University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 163,
+				"university": "University of Alabama Birmingham",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 163,
+				"university": "University of Massachusetts Amherst",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 165,
+				"university": "University of Gottingen",
+				"country": "Германия"
+			},
+			{
+				"rank": 166,
+				"university": "University of Warwick",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 167,
+				"university": "Oregon Health & Science University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 167,
+				"university": "Technical University of Denmark",
+				"country": "Дания"
+			},
+			{
+				"rank": 169,
+				"university": "University of Utah",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 169,
+				"university": "Hunan University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 169,
+				"university": "Delft University of Technology",
+				"country": "Нидерландия"
+			},
+			{
+				"rank": 172,
+				"university": "University of Rochester",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 172,
+				"university": "Queensland University of Technology (QUT)",
+				"country": "Австралия"
+			},
+			{
+				"rank": 174,
+				"university": "Universite Catholique Louvain",
+				"country": "Белгия"
+			},
+			{
+				"rank": 174,
+				"university": "Cankaya University",
+				"country": "Туркия"
+			},
+			{
+				"rank": 176,
+				"university": "University of Colorado Anschutz Medical Campus",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 176,
+				"university": "Tel Aviv University",
+				"country": "Исроил"
+			},
+			{
+				"rank": 176,
+				"university": "University of Calgary",
+				"country": "Канада"
+			},
+			{
+				"rank": 176,
+				"university": "University of Sussex",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 180,
+				"university": "Aix-Marseille Universite",
+				"country": "Франция"
+			},
+			{
+				"rank": 180,
+				"university": "University of Freiburg",
+				"country": "Германия"
+			},
+			{
+				"rank": 180,
+				"university": "Rice University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 183,
+				"university": "University of Iowa",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 184,
+				"university": "Eberhard Karls University of Tubingen",
+				"country": "Германия"
+			},
+			{
+				"rank": 185,
+				"university": "Lancaster University",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 185,
+				"university": "University of Lausanne",
+				"country": "Швейцария"
+			},
+			{
+				"rank": 187,
+				"university": "University of Naples Federico II",
+				"country": "Италия"
+			},
+			{
+				"rank": 188,
+				"university": "Maastricht University",
+				"country": "Голландия"
+			},
+			{
+				"rank": 188,
+				"university": "Technische Universitat Dresden",
+				"country": "Германия"
+			},
+			{
+				"rank": 190,
+				"university": "Universite Grenoble Alpes (UGA)",
+				"country": "Франция"
+			},
+			{
+				"rank": 191,
+				"university": "University of California Riverside",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 192,
+				"university": "University of Wollongong",
+				"country": "Австралия"
+			},
+			{
+				"rank": 192,
+				"university": "University of Waterloo",
+				"country": "Канада"
+			},
+			{
+				"rank": 192,
+				"university": "Macquarie University",
+				"country": "Австралия"
+			},
+			{
+				"rank": 195,
+				"university": "University of Wurzburg",
+				"country": "Германия"
+			},
+			{
+				"rank": 195,
+				"university": "Northeastern University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 197,
+				"university": "Universite de Montpellier",
+				"country": "Франция"
+			},
+			{
+				"rank": 198,
+				"university": "Harbin Institute of Technology",
+				"country": "Хитой"
+			},
+			{
+				"rank": 199,
+				"university": "Pompeu Fabra University",
+				"country": "Испания"
+			},
+			{
+				"rank": 199,
+				"university": "Tongji University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 201,
+				"university": "RWTH Aachen University",
+				"country": "Германия"
+			},
+			{
+				"rank": 201,
+				"university": "Swinburne University of Technology",
+				"country": "Австралия"
+			},
+			{
+				"rank": 203,
+				"university": "University of Bergen",
+				"country": "Норвегия"
+			},
+			{
+				"rank": 203,
+				"university": "Universidade de Lisboa",
+				"country": "Португалия"
+			},
+			{
+				"rank": 203,
+				"university": "Griffith University",
+				"country": "Австралия"
+			},
+			{
+				"rank": 203,
+				"university": "National Taiwan University",
+				"country": "Таиван"
+			},
+			{
+				"rank": 207,
+				"university": "University of Cincinnati",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 208,
+				"university": "Medical University of Vienna",
+				"country": "Австрия"
+			},
+			{
+				"rank": 209,
+				"university": "State University of New York (SUNY) Stony Brook",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 209,
+				"university": "University of Vienna",
+				"country": "Автсрия"
+			},
+			{
+				"rank": 211,
+				"university": "Central South University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 212,
+				"university": "Royal Melbourne Institute of Technology (RMIT)",
+				"country": "Австралия"
+			},
+			{
+				"rank": 212,
+				"university": "University of Turin",
+				"country": "Италия"
+			},
+			{
+				"rank": 212,
+				"university": "University of Valencia",
+				"country": "Испания"
+			},
+			{
+				"rank": 212,
+				"university": "King Saud University",
+				"country": "Саудия Арабистони"
+			},
+			{
+				"rank": 216,
+				"university": "Southern University of Science & Technology",
+				"country": "Хитой"
+			},
+			{
+				"rank": 216,
+				"university": "Trinity College Dublin",
+				"country": "Ирландия"
+			},
+			{
+				"rank": 218,
+				"university": "University of Ottawa",
+				"country": "Канада"
+			},
+			{
+				"rank": 218,
+				"university": "Deakin University",
+				"country": "Австралия"
+			},
+			{
+				"rank": 218,
+				"university": "University of Leicester",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 218,
+				"university": "South China University of Technology",
+				"country": "Хитой"
+			},
+			{
+				"rank": 222,
+				"university": "University of Munster",
+				"country": "Германия"
+			},
+			{
+				"rank": 222,
+				"university": "University of Pisa",
+				"country": "Италия"
+			},
+			{
+				"rank": 224,
+				"university": "Xi'an Jiaotong University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 224,
+				"university": "Ton Duc Thang University",
+				"country": "Вьетнам"
+			},
+			{
+				"rank": 226,
+				"university": "University of Antwerp",
+				"country": "Бельгия"
+			},
+			{
+				"rank": 227,
+				"university": "University of Tennessee Knoxville",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 227,
+				"university": "Charles University Prague",
+				"country": "Чехия"
+			},
+			{
+				"rank": 227,
+				"university": "Karlsruhe Institute of Technology",
+				"country": "Германия"
+			},
+			{
+				"rank": 230,
+				"university": "Universite Libre de Bruxelles",
+				"country": "Бельгия"
+			},
+			{
+				"rank": 230,
+				"university": "Universiti Malaya",
+				"country": "Малайзия"
+			},
+			{
+				"rank": 230,
+				"university": "North Carolina State University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 230,
+				"university": "Autonomous University of Madrid",
+				"country": "Испания"
+			},
+			{
+				"rank": 230,
+				"university": "University of Electronic Science & Technology of China",
+				"country": "Хитой"
+			},
+			{
+				"rank": 230,
+				"university": "University of Newcastle",
+				"country": "Австралия"
+			},
+			{
+				"rank": 236,
+				"university": "Southeast University - China",
+				"country": "Хитой"
+			},
+			{
+				"rank": 237,
+				"university": "Western Sydney University",
+				"country": "Австралия"
+			},
+			{
+				"rank": 237,
+				"university": "Goethe University Frankfurt",
+				"country": "Германия"
+			},
+			{
+				"rank": 237,
+				"university": "London School Economics & Political Science",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 240,
+				"university": "University College Dublin",
+				"country": "Ирландия"
+			},
+			{
+				"rank": 241,
+				"university": "Tufts University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 241,
+				"university": "Royal Institute of Technology",
+				"country": "Швеция"
+			},
+			{
+				"rank": 241,
+				"university": "Florida State University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 244,
+				"university": "Hebrew University of Jerusalem",
+				"country": "Исроил"
+			},
+			{
+				"rank": 244,
+				"university": "Johannes Gutenberg University of Mainz",
+				"country": "Германия"
+			},
+			{
+				"rank": 244,
+				"university": "Ecole Normale Superieure (ENS)",
+				"country": "Франция"
+			},
+			{
+				"rank": 247,
+				"university": "University of Cologne",
+				"country": "Германия"
+			},
+			{
+				"rank": 247,
+				"university": "University of Witwatersrand",
+				"country": "Жанубий Африка"
+			},
+			{
+				"rank": 247,
+				"university": "Universidade do Porto",
+				"country": "Португалия"
+			},
+			{
+				"rank": 250,
+				"university": "University of Otago",
+				"country": "Янги Зелландия"
+			},
+			{
+				"rank": 250,
+				"university": "Xiamen University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 250,
+				"university": "National & Kapodistrian University of Athens",
+				"country": "Греция"
+			},
+			{
+				"rank": 253,
+				"university": "University of Florence",
+				"country": "Италия"
+			},
+			{
+				"rank": 253,
+				"university": "University of Illinois Chicago",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 255,
+				"university": "Beihang University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 255,
+				"university": "University of Miami",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 255,
+				"university": "University of Oregon",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 255,
+				"university": "Nankai University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 255,
+				"university": "University of Erlangen Nuremberg",
+				"country": "Германия"
+			},
+			{
+				"rank": 260,
+				"university": "University of Tartu",
+				"country": "Эстония"
+			},
+			{
+				"rank": 260,
+				"university": "University of Trento",
+				"country": "Италия"
+			},
+			{
+				"rank": 262,
+				"university": "Tianjin University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 263,
+				"university": "Dartmouth College",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 263,
+				"university": "University of Southern Denmark",
+				"country": "Дания"
+			},
+			{
+				"rank": 263,
+				"university": "Iowa State University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 266,
+				"university": "Sungkyunkwan University (SKKU)",
+				"country": "Жанубий Корея"
+			},
+			{
+				"rank": 266,
+				"university": "Virginia Polytechnic Institute & State University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 266,
+				"university": "Yeshiva University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 266,
+				"university": "Aalborg University",
+				"country": "Дания"
+			},
+			{
+				"rank": 266,
+				"university": "Norwegian University of Science & Technology (NTNU)",
+				"country": "Норвегия"
+			},
+			{
+				"rank": 266,
+				"university": "Beijing Normal University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 272,
+				"university": "University of Texas Health Science Center Houston",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 272,
+				"university": "George Washington University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 274,
+				"university": "Shenzhen University",
+				"country": "Хитой"
+			},
+			{
+				"rank": 275,
+				"university": "Aalto University",
+				"country": "Финляндия"
+			},
+			{
+				"rank": 275,
+				"university": "University of Milano-Bicocca",
+				"country": "Италия"
+			},
+			{
+				"rank": 275,
+				"university": "University of Tasmania",
+				"country": "Австралия"
+			},
+			{
+				"rank": 278,
+				"university": "Colorado State University",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 278,
+				"university": "Durham University",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 280,
+				"university": "Universite de Strasbourg",
+				"country": "Франция"
+			},
+			{
+				"rank": 280,
+				"university": "University of Aberdeen",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 280,
+				"university": "University of Kiel",
+				"country": "Германия"
+			},
+			{
+				"rank": 280,
+				"university": "University of York - UK",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 284,
+				"university": "China University of Geosciences",
+				"country": "Хитой"
+			},
+			{
+				"rank": 284,
+				"university": "International School for Advanced Studies (SISSA)",
+				"country": "Италия"
+			},
+			{
+				"rank": 284,
+				"university": "Korea Advanced Institute of Science & Technology (KAIST)",
+				"country": "Жанубий Корея"
+			},
+			{
+				"rank": 287,
+				"university": "Universite Toulouse III - Paul Sabatier",
+				"country": "Франция"
+			},
+			{
+				"rank": 287,
+				"university": "Osaka University",
+				"country": "Япония"
+			},
+			{
+				"rank": 289,
+				"university": "State University of New York (SUNY) Buffalo",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 289,
+				"university": "Tohoku University",
+				"country": "Япония"
+			},
+			{
+				"rank": 289,
+				"university": "University of Maryland Baltimore",
+				"country": "АҚШ"
+			},
+			{
+				"rank": 289,
+				"university": "Korea University",
+				"country": "Жанубий Корея"
+			},
+			{
+				"rank": 293,
+				"university": "Universite de Bordeaux",
+				"country": "Франция"
+			},
+			{
+				"rank": 294,
+				"university": "Vrije Universiteit Brussel",
+				"country": "Бельгия"
+			},
+			{
+				"rank": 295,
+				"university": "Yonsei University",
+				"country": "Жанубий Корея"
+			},
+			{
+				"rank": 295,
+				"university": "Universidade Estadual de Campinas",
+				"country": "Бразилия"
+			},
+			{
+				"rank": 298,
+				"university": "Queens University Belfast",
+				"country": "Буюк Британия"
+			},
+			{
+				"rank": 298,
+				"university": "University of Pavia",
+				"country": "Италия"
+			},
+			{
+				"rank": 300,
+				"university": "Polytechnic University of Milan",
+				"country": "Италия"
+			}
+		]
+	}
+
+
