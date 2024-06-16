@@ -7,6 +7,11 @@
 			"country": "АҚШ"
 		},
 		{
+			"rank": 1,
+			"university": "MIT",
+			"country": "АҚШ"
+		},
+		{
 			"rank": 2,
 			"university": "University of Cambridge",
 			"country": "Буюк Британия"
@@ -158,7 +163,7 @@
 		},
 		{
 			"rank": 32,
-			"university": "The University of Manchester",
+			"university": "University of Manchester",
 			"country": "АҚШ"
 		},
 		{
