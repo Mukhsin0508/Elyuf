@@ -130,6 +130,7 @@ async def admin_password(update: Update, context: CallbackContext):
 load_registered_users()
 
 # Load university rankings data
+# need to clear data
 try:
     qs_data, times_data, us_news_data = load_data()
     print("University Rankings data successfully loaded!")
