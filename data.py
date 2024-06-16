@@ -23,3 +23,4 @@ def load_data():
         us_news_data = [] 
 
     return qs_data, times_data, us_news_data, 
+

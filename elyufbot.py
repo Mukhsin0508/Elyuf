@@ -116,7 +116,25 @@ except Exception as e:
 
 # Command to provide help
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("I am Elyuf Ranker! How can I help?")
+    help_text = """
+When referencing universities, please adhere to the following guidelines:
+
+1. Spell university names correctly, using their official titles. For example:
+   Stanford University
+   University of Cambridge
+   Massachusetts Institute of Technology
+
+2. You may use either all capital letters or standard capitalization, but ensure the spelling is correct. For instance:
+   HARVARD UNIVERSITY or Harvard University
+   UNIVERSITY OF OXFORD or University of Oxford
+
+3. Do not include specific branch locations or campuses. The rankings should be for the main university only.
+
+4. If you're unsure about the correct spelling or official name of a university, double-check before submitting.
+
+5. The system will not provide rankings based on specific locations or branches, so please only use the primary university name.
+    """
+    await update.message.reply_text(help_text)
 
 # Command to restart the bot
 async def restart_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
