@@ -4,7 +4,7 @@ from data import load_data
 from pymongo import MongoClient
 import certifi
 import pickle
-from telegram import Update
+from telegram import Update, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 from telegram.ext import (
     CommandHandler,
     ConversationHandler,
@@ -14,6 +14,7 @@ from telegram.ext import (
     Application,
     CallbackContext,
 )
+from datetime import datetime # UPDATE_17
 import dotenv
 
 # Load environment variables
@@ -31,6 +32,9 @@ ca_cert_path = certifi.where()
 client = MongoClient(MONGODB_URI, tlsCAFile=ca_cert_path)
 db = client["elyufbot"]
 collection = db["users"]
+for db_name in client.list_database_names():
+    print(db_name)
+    
 
 # Logging setup
 logging.basicConfig(
@@ -50,6 +54,7 @@ def load_registered_users():
     global registered_users, user_data
     registered_users = [doc["_id"] for doc in collection.find()]
     user_data = {doc["_id"]: doc for doc in collection.find()}
+    print("Registered Users successfully loaded!")
 
 # Function to start the conversation
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -70,18 +75,35 @@ async def name(update: Update, context: CallbackContext):
     user_id = update.message.from_user.id
     user_data[user_id]["name"] = update.message.text
     
-    await update.message.reply_text("Please enter your phone number:")
+    #UPDATE_17 Created a button to reequest phone number
+    button = KeyboardButton("📞✅ Share Phone Number 📞✅", request_contact = True)
+    reply_markup = ReplyKeyboardMarkup([[button]], one_time_keyboard=True, resize_keyboard=False)
+    
+    await update.message.reply_text("Please share your phone number!", reply_markup=reply_markup, parse_mode='HTML')
     return PHONE
 
 # Function to handle phone number input
 async def phone(update: Update, context: CallbackContext):
     user_id = update.message.from_user.id
-    user_data[user_id]["phone"] = update.message.text
+    
+    #UPDATE_17 Check if the message contains a contact 
+    if update.message.contact:
+        phone_number = update.message.contact.phone_number
+    else:
+        phone_number = update.message.text
+        
+    # Added a signup datetime
+    signup_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+    user_data[user_id].update({
+        "phone_number": phone_number,
+        "signup_datetime": signup_datetime
+    })
     
     collection.update_one({"_id": user_id}, {"$set": user_data[user_id]}, upsert=True)
     registered_users.append(user_id)
     
-    await update.message.reply_text("Thank you! Which university do you want to look up?")
+    await update.message.reply_text("Thank you! Which university do you want to look up?", reply_markup=ReplyKeyboardRemove()) #UPDATE_17 add a keyboardRemove to make the "Share Phone Number" disappear!
     return ConversationHandler.END
 
 # Function to handle admin authentication
@@ -110,7 +132,7 @@ load_registered_users()
 # Load university rankings data
 try:
     qs_data, times_data, us_news_data = load_data()
-    print("Loaded data successfully!")
+    print("University Rankings data successfully loaded!")
 except Exception as e:
     print(f"Error loading data: {e}")
 
@@ -174,8 +196,8 @@ def handle_response(text: str, qs_data, times_data, us_news_data) -> str:
 
     return "\n".join(response)
 
-# Function to handle messages
-async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):       # Function to handle messages
     message_type: str = update.message.chat.type
     text: str = update.message.text
 
@@ -216,7 +238,8 @@ if __name__ == "__main__":
         entry_points=[CommandHandler("start", start_command)],
         states={
             NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, name)],
-            PHONE: [MessageHandler(filters.TEXT & ~filters.COMMAND, phone)],
+            PHONE: [ MessageHandler(filters.CONTACT, phone) , # Added a messageHandler for contact
+                        MessageHandler(filters.TEXT & ~filters.COMMAND, phone)],
             ADMIN: [MessageHandler(filters.TEXT & ~filters.COMMAND, admin_password)],
         },
         fallbacks=[CommandHandler("start", start_command)],
@@ -231,4 +254,4 @@ if __name__ == "__main__":
 
     # Polling
     print("Polling...")
-    app.run_polling(poll_interval=3)
+    app.run_polling(poll_interval=1)

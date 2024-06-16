@@ -67,7 +67,7 @@
 			},
 			{
 				"rank": 14,
-				"university": "University of California Los-Angeles",
+				"university": "University of California Los Angeles",
 				"country": "АҚШ"
 			},
 			{
@@ -552,7 +552,7 @@
 			},
 			{
 				"rank": 109,
-				"university": "Huazhong University of Science & Technology",
+				"university": "Huazhong University of Science and Technology",
 				"country": "Хитой"
 			},
 			{
@@ -567,7 +567,7 @@
 			},
 			{
 				"rank": 112,
-				"university": "University of Chinese Academy of Sciences, CAS",
+				"university": "University of Chinese Academy of Sciences",
 				"country": "Хитой"
 			},
 			{
@@ -662,7 +662,7 @@
 			},
 			{
 				"rank": 129,
-				"university": "Seoul National University (SNU)",
+				"university": "Seoul National University",
 				"country": "Корея"
 			},
 			{
@@ -712,7 +712,7 @@
 			},
 			{
 				"rank": 140,
-				"university": "Purdue University West Lafayette Campus",
+				"university": "Purdue University",
 				"country": "АҚШ"
 			},
 			{
@@ -787,12 +787,12 @@
 			},
 			{
 				"rank": 156,
-				"university": "Arizona State University-Tempe",
+				"university": "Arizona State University",
 				"country": "АҚШ"
 			},
 			{
 				"rank": 159,
-				"university": "Newcastle University - UK",
+				"university": "Newcastle University",
 				"country": "Буюк Британия"
 			},
 			{
@@ -862,7 +862,7 @@
 			},
 			{
 				"rank": 172,
-				"university": "Queensland University of Technology (QUT)",
+				"university": "Queensland University of Technology",
 				"country": "Австралия"
 			},
 			{
@@ -947,7 +947,7 @@
 			},
 			{
 				"rank": 190,
-				"university": "Universite Grenoble Alpes (UGA)",
+				"university": "Universite Grenoble Alpes",
 				"country": "Франция"
 			},
 			{
@@ -1042,7 +1042,7 @@
 			},
 			{
 				"rank": 209,
-				"university": "State University of New York (SUNY) Stony Brook",
+				"university": "State University of New York",
 				"country": "АҚШ"
 			},
 			{
@@ -1057,7 +1057,7 @@
 			},
 			{
 				"rank": 212,
-				"university": "Royal Melbourne Institute of Technology (RMIT)",
+				"university": "Royal Melbourne Institute of Technology",
 				"country": "Австралия"
 			},
 			{
@@ -1177,7 +1177,7 @@
 			},
 			{
 				"rank": 236,
-				"university": "Southeast University - China",
+				"university": "Southeast University China",
 				"country": "Хитой"
 			},
 			{
@@ -1227,7 +1227,7 @@
 			},
 			{
 				"rank": 244,
-				"university": "Ecole Normale Superieure (ENS)",
+				"university": "Ecole Normale Superieure",
 				"country": "Франция"
 			},
 			{
@@ -1327,7 +1327,7 @@
 			},
 			{
 				"rank": 266,
-				"university": "Sungkyunkwan University (SKKU)",
+				"university": "Sungkyunkwan University",
 				"country": "Жанубий Корея"
 			},
 			{
@@ -1347,7 +1347,7 @@
 			},
 			{
 				"rank": 266,
-				"university": "Norwegian University of Science & Technology (NTNU)",
+				"university": "Norwegian University of Science & Technology",
 				"country": "Норвегия"
 			},
 			{
@@ -1422,17 +1422,17 @@
 			},
 			{
 				"rank": 284,
-				"university": "International School for Advanced Studies (SISSA)",
+				"university": "International School for Advanced Studies",
 				"country": "Италия"
 			},
 			{
 				"rank": 284,
-				"university": "Korea Advanced Institute of Science & Technology (KAIST)",
+				"university": "Korea Advanced Institute of Science & Technology",
 				"country": "Жанубий Корея"
 			},
 			{
 				"rank": 287,
-				"university": "Universite Toulouse III - Paul Sabatier",
+				"university": "Universite Toulouse III Paul Sabatier",
 				"country": "Франция"
 			},
 			{
@@ -1442,7 +1442,7 @@
 			},
 			{
 				"rank": 289,
-				"university": "State University of New York (SUNY) Buffalo",
+				"university": "State University of New York Buffalo",
 				"country": "АҚШ"
 			},
 			{
