@@ -102,8 +102,28 @@ async def phone(update: Update, context: CallbackContext):
     
     collection.update_one({"_id": user_id}, {"$set": user_data[user_id]}, upsert=True)
     registered_users.append(user_id)
+    start_text = """
+
+Thank you! Which university do you want to look up?    
     
-    await update.message.reply_text("Thank you! Which university do you want to look up?", reply_markup=ReplyKeyboardRemove()) #UPDATE_17 add a keyboardRemove to make the "Share Phone Number" disappear!
+When referencing universities, please adhere to the following guidelines:
+
+1. Spell university names correctly, using their official titles. For example:
+   Stanford University
+   University of Cambridge
+   Massachusetts Institute of Technology
+
+2. You may use either all capital letters or standard capitalization, but ensure the spelling is correct. For instance:
+   HARVARD UNIVERSITY or Harvard University
+   UNIVERSITY OF OXFORD or University of Oxford
+
+3. Do not include specific branch locations or campuses. The rankings should be for the main university only.
+
+4. If you're unsure about the correct spelling or official name of a university, double-check before submitting.
+
+5. The system will not provide rankings based on specific locations or branches, so please only use the primary university name.
+    """
+    await update.message.reply_text(start_text, reply_markup=ReplyKeyboardRemove()) #UPDATE_17 add a keyboardRemove to make the "Share Phone Number" disappear!
     return ConversationHandler.END
 
 # Function to handle admin authentication
