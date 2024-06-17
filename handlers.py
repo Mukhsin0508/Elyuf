@@ -1,41 +1,31 @@
-import logging
-import os
+import os, certifi, dotenv, logging
 from data import load_data
-from pymongo import MongoClient
-import certifi
-import pickle
+from datetime import datetime
+# from pymongo import MongoClient
+from user_database import registered_users, user_data, collection, load_registered_users
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 from telegram.ext import (
-    CommandHandler,
     ConversationHandler,
-    MessageHandler,
-    filters,
     ContextTypes,
-    Application,
     CallbackContext,
 )
-from datetime import datetime # UPDATE_17
-import dotenv
 
 # Load environment variables
 dotenv.load_dotenv()
 
-# Telegram bot and MongoDB configuration
-TOKEN = os.getenv("TOKEN")
 BOT_USERNAME = os.getenv("BOT_USERNAME")
-MONGODB_URI = os.getenv("MONGO_CLIENT")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
-ADMIN_USER_ID = os.getenv("ADMIN_USER_ID")
+ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID"))
+# MONGODB_URI = os.getenv("MONGO_CLIENT")
 
 # MongoDB connection
-ca_cert_path = certifi.where()
-client = MongoClient(MONGODB_URI, tlsCAFile=ca_cert_path)
-db = client["elyufbot"]
-collection = db["users"]
-for db_name in client.list_database_names():
-    print(db_name)
+# ca_cert_path = certifi.where()
+# client = MongoClient(MONGODB_URI, tlsCAFile=ca_cert_path)
+# db = client["elyufbot"]
+# collection = db["users"]
+# for db_name in client.list_database_names():
+#     print(db_name)
     
-
 # Logging setup
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -46,27 +36,31 @@ logger = logging.getLogger(__name__)
 START, NAME, PHONE, ADMIN, NEW_REGISTRATION = range(5)
 
 # Global variables to store user data
-registered_users = []
-user_data = {}
+# registered_users = []
+# user_data = {}
 
 # Load registered users from MongoDB
-def load_registered_users():
-    global registered_users, user_data
-    registered_users = [doc["_id"] for doc in collection.find()]
-    user_data = {doc["_id"]: doc for doc in collection.find()}
-    print("Registered Users successfully loaded!")
+# def load_registered_users():
+#     global registered_users, user_data
+#     registered_users = [doc["_id"] for doc in collection.find()]
+#     user_data = {doc["_id"]: doc for doc in collection.find()}
+#     print("Registered Users successfully loaded!")
+
+# load_registered_users()
+
+
 
 # Function to start the conversation
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.message.from_user.id
-    user_username = update.message.from_user.username
+    user_name = update.message.from_user.username
     if user_id in registered_users:
         await update.message.reply_text(
             "You are already registered! Which university do you want to look up?"
         )
         return ConversationHandler.END
 
-    user_data[user_id] = {"username": user_username}
+    user_data[user_id] = {"username": user_name}
     await update.message.reply_text("Welcome! Please enter your name:")
     return NAME
 
@@ -75,8 +69,7 @@ async def name(update: Update, context: CallbackContext):
     user_id = update.message.from_user.id
     user_data[user_id]["name"] = update.message.text
     
-    #UPDATE_17 Created a button to reequest phone number
-    button = KeyboardButton("📞✅ Share Phone Number 📞✅", request_contact = True)
+    button = KeyboardButton("📞✅ Share Phone Number 📞✅", request_contact=True)
     reply_markup = ReplyKeyboardMarkup([[button]], one_time_keyboard=True, resize_keyboard=False)
     
     await update.message.reply_text("Please share your phone number!", reply_markup=reply_markup, parse_mode='HTML')
@@ -86,44 +79,43 @@ async def name(update: Update, context: CallbackContext):
 async def phone(update: Update, context: CallbackContext):
     user_id = update.message.from_user.id
     
-    #UPDATE_17 Check if the message contains a contact 
     if update.message.contact:
         phone_number = update.message.contact.phone_number
     else:
         phone_number = update.message.text
         
-    # Added a signup datetime
     signup_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
     user_data[user_id].update({
         "phone_number": phone_number,
-        "signup_datetime": signup_datetime
+        "signup_datetime": signup_datetime,
+        "search_count": 0
     })
     
     collection.update_one({"_id": user_id}, {"$set": user_data[user_id]}, upsert=True)
     registered_users.append(user_id)
     start_text = """
+🎓 Thank you! Which university do you want to look up? 📚
 
-Thank you! Which university do you want to look up?    
-    
 When referencing universities, please adhere to the following guidelines:
 
-1. Spell university names correctly, using their official titles. For example:
-   Stanford University
-   University of Cambridge
-   Massachusetts Institute of Technology
+Spell university names correctly, using their official titles. 🏛️
 
-2. You may use either all capital letters or standard capitalization, but ensure the spelling is correct. For instance:
-   HARVARD UNIVERSITY or Harvard University
-   UNIVERSITY OF OXFORD or University of Oxford
+Example: Stanford University 🏫
+Example: University of Cambridge 🏰
+Example: Massachusetts Institute of Technology 💻
+You may use either all capital letters or standard capitalization, but ensure the spelling is correct. 🔠
 
-3. Do not include specific branch locations or campuses. The rankings should be for the main university only.
+Example: HARVARD UNIVERSITY or Harvard University 🏛️
+Example: UNIVERSITY OF OXFORD or University of Oxford 🎓
+Do not include specific branch locations or campuses. 🏢
 
-4. If you're unsure about the correct spelling or official name of a university, double-check before submitting.
+The rankings should be for the main university only.
+If you're unsure about the correct spelling or official name of a university, double-check before submitting. ✔️
 
-5. The system will not provide rankings based on specific locations or branches, so please only use the primary university name.
+The system will not provide rankings based on specific locations or branches, so please only use the primary university name. 📊
     """
-    await update.message.reply_text(start_text, reply_markup=ReplyKeyboardRemove()) #UPDATE_17 add a keyboardRemove to make the "Share Phone Number" disappear!
+    await update.message.reply_text(start_text, reply_markup=ReplyKeyboardRemove())
     return ConversationHandler.END
 
 # Function to handle admin authentication
@@ -146,11 +138,7 @@ async def admin_password(update: Update, context: CallbackContext):
         await update.message.reply_text("Incorrect password.")
         return ConversationHandler.END
 
-# Load registered users data
-load_registered_users()
-
-# Load university rankings data
-# need to clear data
+# Load university rankings data 
 try:
     qs_data, times_data, us_news_data = load_data()
     print("University Rankings data successfully loaded!")
@@ -162,20 +150,21 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     help_text = """
 When referencing universities, please adhere to the following guidelines:
 
-1. Spell university names correctly, using their official titles. For example:
-   Stanford University
-   University of Cambridge
-   Massachusetts Institute of Technology
+Spell university names correctly, using their official titles. 🏛️
 
-2. You may use either all capital letters or standard capitalization, but ensure the spelling is correct. For instance:
-   HARVARD UNIVERSITY or Harvard University
-   UNIVERSITY OF OXFORD or University of Oxford
+Example: Stanford University 🏫
+Example: University of Cambridge 🏰
+Example: Massachusetts Institute of Technology 💻
+You may use either all capital letters or standard capitalization, but ensure the spelling is correct. 🔠
 
-3. Do not include specific branch locations or campuses. The rankings should be for the main university only.
+Example: HARVARD UNIVERSITY or Harvard University 🏛️
+Example: UNIVERSITY OF OXFORD or University of Oxford 🎓
+Do not include specific branch locations or campuses. 🏢
 
-4. If you're unsure about the correct spelling or official name of a university, double-check before submitting.
+The rankings should be for the main university only.
+If you're unsure about the correct spelling or official name of a university, double-check before submitting. ✔️
 
-5. The system will not provide rankings based on specific locations or branches, so please only use the primary university name.
+The system will not provide rankings based on specific locations or branches, so please only use the primary university name. 📊
     """
     await update.message.reply_text(help_text)
 
@@ -217,12 +206,11 @@ def handle_response(text: str, qs_data, times_data, us_news_data) -> str:
 
     return "\n".join(response)
 
-
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):       # Function to handle messages
     message_type: str = update.message.chat.type
+    user_id = update.message.from_user.id
     text: str = update.message.text
 
-    # Check if the conversation handler is active
     current_state = context.user_data.get("conversation_state")
     if current_state in [NAME, PHONE, ADMIN]:
         return
@@ -240,39 +228,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):   
 
     print("Bot:", response)
     await update.message.reply_text(response)
+    
+    # Incrementing the user's search count for data analysis
+    if user_id in user_data:
+        user_data[user_id]["search_count"] = user_data[user_id].get("search_count", 0) + 1
+        collection.update_one({"_id": user_id}, {"$set": {"search_count": user_data[user_id]["search_count"]}})
 
 # Function to handle errors
 async def error(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logger.error(f"Update {update} caused error {context.error}")
-
-# Main function to start the bot
-if __name__ == "__main__":
-    print("Starting bot...")
-    app = Application.builder().token(TOKEN).build()
-
-    # Command Handlers
-    app.add_handler(CommandHandler("help", help_command))
-    app.add_handler(CommandHandler("restart", restart_command))
-
-    # Conversation Handler for registration
-    conv_handler = ConversationHandler(
-        entry_points=[CommandHandler("start", start_command)],
-        states={
-            NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, name)],
-            PHONE: [ MessageHandler(filters.CONTACT, phone) , # Added a messageHandler for contact
-                        MessageHandler(filters.TEXT & ~filters.COMMAND, phone)],
-            ADMIN: [MessageHandler(filters.TEXT & ~filters.COMMAND, admin_password)],
-        },
-        fallbacks=[CommandHandler("start", start_command)],
-    )
-    app.add_handler(conv_handler)
-
-    # Message Handler
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-
-    # Error Handler
-    app.add_error_handler(error)
-
-    # Polling
-    print("Polling...")
-    app.run_polling(poll_interval=1)

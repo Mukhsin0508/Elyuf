@@ -1,1 +1,1 @@
-worker: python elyufbot.py
+worker: python main.py
