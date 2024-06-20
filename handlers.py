@@ -1,8 +1,6 @@
-import os, certifi, dotenv, logging
-from turtle import dot
+import os, dotenv, logging
 from data import load_data
 from datetime import datetime
-# from pymongo import MongoClient
 from user_database import registered_users, user_data, collection, load_registered_users
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
