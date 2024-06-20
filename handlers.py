@@ -1,9 +1,10 @@
 import os, certifi, dotenv, logging
+from turtle import dot
 from data import load_data
 from datetime import datetime
 # from pymongo import MongoClient
 from user_database import registered_users, user_data, collection, load_registered_users
-from telegram import Update, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
+from telegram import Update, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     ConversationHandler,
     ContextTypes,
@@ -16,16 +17,7 @@ dotenv.load_dotenv()
 BOT_USERNAME = os.getenv("BOT_USERNAME")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID"))
-# MONGODB_URI = os.getenv("MONGO_CLIENT")
 
-# MongoDB connection
-# ca_cert_path = certifi.where()
-# client = MongoClient(MONGODB_URI, tlsCAFile=ca_cert_path)
-# db = client["elyufbot"]
-# collection = db["users"]
-# for db_name in client.list_database_names():
-#     print(db_name)
-    
 # Logging setup
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -34,20 +26,6 @@ logger = logging.getLogger(__name__)
 
 # Conversation states
 START, NAME, PHONE, ADMIN, NEW_REGISTRATION = range(5)
-
-# Global variables to store user data
-# registered_users = []
-# user_data = {}
-
-# Load registered users from MongoDB
-# def load_registered_users():
-#     global registered_users, user_data
-#     registered_users = [doc["_id"] for doc in collection.find()]
-#     user_data = {doc["_id"]: doc for doc in collection.find()}
-#     print("Registered Users successfully loaded!")
-
-# load_registered_users()
-
 
 
 # Function to start the conversation
@@ -227,7 +205,13 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):   
         response: str = handle_response(text, qs_data, times_data, us_news_data)
 
     print("Bot:", response)
-    await update.message.reply_text(response)
+    
+    # Creating an inline keyboard for Pollfish Survey
+    keyboard = [[InlineKeyboardButton("💡✅ Take Survey 🚀🎯", url="https://wss.pollfish.com/link/3f802d5a-a567-42f8-9b53-c5f9826b74b6")]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    
+    # Sending the response with the inline button 
+    await update.message.reply_text(response, reply_markup=reply_markup)
     
     # Incrementing the user's search count for data analysis
     if user_id in user_data:
