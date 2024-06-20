@@ -8,6 +8,7 @@ from telegram.ext import (
     ContextTypes,
     CallbackContext,
 )
+import re
 
 # Load environment variables
 dotenv.load_dotenv()
@@ -192,10 +193,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):   
         return
 
     print(f'User ({update.message.chat.id}) in {message_type}: "{text}"')
-
-    if message_type == "group":
+    
+    if message_type in ["group", "supergroup", "channel"]:
         if BOT_USERNAME in text:
-            new_text: str = text.replace(BOT_USERNAME, "").strip()
+            new_text = re.sub(f'@{BOT_USERNAME}', '', text, flags=re.IGNORECASE).strip()
             response: str = handle_response(new_text, qs_data, times_data, us_news_data)
         else:
             return
