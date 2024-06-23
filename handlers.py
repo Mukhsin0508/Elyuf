@@ -66,7 +66,8 @@ async def phone(update: Update, context: CallbackContext):
     user_data[user_id].update({
         "phone_number": phone_number,
         "signup_datetime": signup_datetime,
-        "search_count": 0
+        "search_count": 0,
+        "roadmap_pressed": 0 
     })
     
     collection.update_one({"_id": user_id}, {"$set": user_data[user_id]}, upsert=True)
@@ -209,9 +210,17 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):   
     keyboard = [[InlineKeyboardButton("💡✅ Take Survey 🚀🎯", url="https://wss.pollfish.com/link/3f802d5a-a567-42f8-9b53-c5f9826b74b6")]]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
-    # Sending the response with the inline button 
-    await update.message.reply_text(response, reply_markup=reply_markup)
+    roadmap_keyboard = [[InlineKeyboardButton("🛣🛫 EYUF Application roadmap ✨🗺", url="https://unicraft.uz/roadmaps/eyuf")]]
+    roadmap_markup = InlineKeyboardMarkup(roadmap_keyboard)
     
+    # Sending the response with the inline button 
+    await update.message.reply_text(response, reply_markup=reply_markup, reply_markup=roadmap_markup)
+    
+    # Incrementing the user's number of presses on the Unicraft Roadmap Inline button
+    if user_id in user_data:
+        user_data[user_id]["roadmap_presses"] = user_data[user_id].get("roadmap_presses", 0) + 1
+        collection.update_one({"_id": user_id}, {"$set": {"roadmap_presses": user_data[user_id]["roadmap_presses"]}})
+
     # Incrementing the user's search count for data analysis
     if user_id in user_data:
         user_data[user_id]["search_count"] = user_data[user_id].get("search_count", 0) + 1
