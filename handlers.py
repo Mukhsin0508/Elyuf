@@ -208,13 +208,16 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):   
     
     # Creating an inline keyboard for Pollfish Survey
     keyboard = [[InlineKeyboardButton("💡✅ Take Survey 🚀🎯", url="https://wss.pollfish.com/link/3f802d5a-a567-42f8-9b53-c5f9826b74b6")]]
-    reply_markup = InlineKeyboardMarkup(keyboard)
+    pollfish_markup = InlineKeyboardMarkup(keyboard)
     
-    roadmap_keyboard = [[InlineKeyboardButton("🛣🛫 EYUF Application roadmap ✨🗺", url="https://unicraft.uz/roadmaps/eyuf")]]
+    roadmap_keyboard = [[InlineKeyboardButton("🛣🛫 EYUF Application roadmap ✨🗺", url="https://unicraft.uz/roadmaps/eyuf?utm_source=eyufbot")]]
     roadmap_markup = InlineKeyboardMarkup(roadmap_keyboard)
     
-    # Sending the response with the inline button 
-    await update.message.reply_text(response, reply_markup=reply_markup, reply_markup=roadmap_markup)
+    # Combine the keyboards
+    combined_markup = InlineKeyboardMarkup(pollfish_markup.inline_keyboard + roadmap_markup.inline_keyboard)
+    
+    # Sending the response with the combined inline button
+    await update.message.reply_text(response, reply_markup=combined_markup)
     
     # Incrementing the user's number of presses on the Unicraft Roadmap Inline button
     if user_id in user_data:
@@ -229,3 +232,4 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):   
 # Function to handle errors
 async def error(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logger.error(f"Update {update} caused error {context.error}")
+
