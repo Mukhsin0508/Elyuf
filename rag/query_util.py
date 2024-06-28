@@ -33,16 +33,16 @@ load_dotenv()
 
 # Authenticate Google Cloud service account
 # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/mukhsinmukhtorov/Desktop/Elyuf/rag/google-services/eyuf-rag-427520-319f41429e2b.json"
-# service_account_info = json.loads(os.getenv('GOOGLE_APPLICATION_CREDENTIALS'))
+service_account_info = json.loads(os.getenv('GOOGLE_APPLICATION_CREDENTIALS'))
 
 # Path to your service account JSON file
-service_account_info_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+# service_account_info_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 
-if service_account_info_path is None:
+if service_account_info is None:
     raise ValueError('GOOGLE_APPLICATION_CREDENTIALS environment variable is not set.')
 
 try:
-    with open(service_account_info_path) as f:
+    with open(service_account_info) as f:
         service_account_info = json.load(f)
 except (FileNotFoundError, json.JSONDecodeError) as e:
     print(f"Error loading Google Cloud credentials: {e}")
