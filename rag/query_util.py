@@ -32,18 +32,7 @@ load_dotenv()
 
 
 # Authenticate Google Cloud service account
-# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/mukhsinmukhtorov/Desktop/Elyuf/rag/google-services/eyuf-rag-427520-319f41429e2b.json"
-
-
-service_account_info=os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
-
-# Ensure the env is loaded correctly 
-if service_account_info:
-    service_account_info = json.loads(service_account_info)
-    cridentials = service_account.Credentials.from_service_account_info(service_account_info)
-else:
-    raise ValueError(f"The GOOGLE_APPLICATION_CREDENTIALS environment variable is not set or empty")
-    
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/mukhsinmukhtorov/Desktop/Elyuf/rag/google-services/eyuf-rag-427520-319f41429e2b.json"
 
 # heroku config:set GOOGLE_APPLICATION_CREDENTIALS="$(cat /Users/mukhsinmukhtorov/Desktop/Elyuf/rag/google-services/eyuf-rag-427520-319f41429e2b.json)" -a app-name/glacial-forest-46805
 # created an env in heroku for GOOGLE_APPLICATION_CREDENTIALS.
