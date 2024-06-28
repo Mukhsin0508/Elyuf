@@ -1,2 +1,1 @@
-echo $GOOGLE_CREDENTIALS > /app/gcp_key.json
-export GOOGLE_APPLICATION_CREDENTIALS="/app/gcp_key.json"
+echo ${GOOGLE_CREDENTIALS} > /gcp_key.json
