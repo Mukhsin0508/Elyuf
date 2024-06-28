@@ -1,3 +1,5 @@
+import re
+from rag.query_util import query_index
 import os, dotenv, logging
 from data import load_data
 from datetime import datetime
@@ -8,7 +10,6 @@ from telegram.ext import (
     ContextTypes,
     CallbackContext,
 )
-import re
 
 # Load environment variables
 dotenv.load_dotenv()
@@ -67,7 +68,8 @@ async def phone(update: Update, context: CallbackContext):
         "phone_number": phone_number,
         "signup_datetime": signup_datetime,
         "search_count": 0,
-        "roadmap_pressed": 0 
+        "roadmap_presses": 0,
+        "survey_count": 0
     })
     
     collection.update_one({"_id": user_id}, {"$set": user_data[user_id]}, upsert=True)
@@ -116,13 +118,6 @@ async def admin_password(update: Update, context: CallbackContext):
         await update.message.reply_text("Incorrect password.")
         return ConversationHandler.END
 
-# Load university rankings data 
-try:
-    qs_data, times_data, us_news_data = load_data()
-    print("University Rankings data successfully loaded!")
-except Exception as e:
-    print(f"Error loading data: {e}")
-
 # Command to provide help
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     help_text = """
@@ -144,7 +139,14 @@ If you're unsure about the correct spelling or official name of a university, do
 
 The system will not provide rankings based on specific locations or branches, so please only use the primary university name. 📊
     """
-    await update.message.reply_text(help_text)
+    
+    # Creating an inline keyboard for Pollfish Survey
+    keyboard = [[InlineKeyboardButton("🤨 Get Help! 🆘", url="https://t.me/elyufhelpbot")]]
+    help_markup = InlineKeyboardMarkup(keyboard)
+    
+    reply_markup = InlineKeyboardMarkup(reply_markup=help_markup)
+    
+    await update.message.reply_text(help_text, reply_markup)
 
 # Command to restart the bot
 async def restart_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -152,64 +154,46 @@ async def restart_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "I finished restarting myself! Is there any university you want to look up!?"
     )
 
-# Function to handle message responses
-def handle_response(text: str, qs_data, times_data, us_news_data) -> str:
-    university = text.strip().lower()
-    response = []
 
-    print(f"Looking up rankings for university: {university}")
 
-    qs_rank = "Not found, The university name is either misspelled or not in the top 300 rankings of QS World University Rankings!"
-    times_rank = "Not found, The university name is either misspelled or not in the top 300 rankings of Times Higher Education World University Rankings!"
-    us_news_rank = "Not found, The university name is either misspelled or not in the top 300 rankings of US News & World Report Best Global Universities!"
 
-    for item in qs_data:
-        if item["university"].lower() == university:
-            qs_rank = item["rank"]
-            break
-
-    for item in times_data:
-        if item["university"].lower() == university:
-            times_rank = item["rank"]
-            break
-
-    for item in us_news_data:
-        if item["university"].lower() == university:
-            us_news_rank = item["rank"]
-            break
-
-    response.append(f"QS World University Rank: {qs_rank}\n")
-    response.append(f"Times Higher Education Rank: {times_rank}\n")
-    response.append(f"US News & World Report Rank: {us_news_rank}\n")
-
-    return "\n".join(response)
-
-async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):       # Function to handle messages
-    message_type: str = update.message.chat.type
-    user_id = update.message.from_user.id
-    text: str = update.message.text
-
-    current_state = context.user_data.get("conversation_state")
-    if current_state in [NAME, PHONE, ADMIN]:
-        return
-
-    print(f'User ({update.message.chat.id}) in {message_type}: "{text}"')
+# Creating Function to handle message requests using RAG model
+def handle_response(text: str) -> str:
+    return query_index(text)
     
-    if message_type in ["group", "supergroup", "channel"]:
-        if BOT_USERNAME in text:
-            new_text = re.sub(f'@{BOT_USERNAME}', '', text, flags=re.IGNORECASE).strip()
-            response: str = handle_response(new_text, qs_data, times_data, us_news_data)
-        else:
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):       # Function to handle messages
+    logger.info("Received update: %s", update)
+    
+    try:
+        message_type: str = update.message.chat.type
+        user_id = update.message.from_user.id
+        text: str = update.message.text
+
+        current_state = context.user_data.get("conversation_state")
+        if current_state in [NAME, PHONE, ADMIN]:
             return
-    else:
-        response: str = handle_response(text, qs_data, times_data, us_news_data)
+
+        print(f'User ({update.message.chat.id}) in {message_type}: "{text}"')
+    
+        if message_type in ["group", "supergroup", "channel"]:
+            if BOT_USERNAME in text:
+                new_text = re.sub(f'@{BOT_USERNAME}', '', text, flags=re.IGNORECASE).strip()
+                response: str = handle_response(new_text,)
+            else:
+                return
+        else:
+            response: str = handle_response(text, )
+            
+    except Exception as e:
+        logger.error("Error in message handler: %s", e)
 
     print("Bot:", response)
     
     # Creating an inline keyboard for Pollfish Survey
-    keyboard = [[InlineKeyboardButton("💡✅ Take Survey 🚀🎯", url="https://wss.pollfish.com/link/3f802d5a-a567-42f8-9b53-c5f9826b74b6")]]
-    pollfish_markup = InlineKeyboardMarkup(keyboard)
+    survey_keyboard = [[InlineKeyboardButton("💡✅ Take Survey 🚀🎯", url="https://wss.pollfish.com/link/3f802d5a-a567-42f8-9b53-c5f9826b74b6")]]
+    pollfish_markup = InlineKeyboardMarkup(survey_keyboard)
     
+    # Created an inline for unicraft.uz as collabration request
     roadmap_keyboard = [[InlineKeyboardButton("🛣🛫 EYUF Application roadmap ✨🗺", url="https://unicraft.uz/roadmaps/eyuf?utm_source=eyufbot")]]
     roadmap_markup = InlineKeyboardMarkup(roadmap_keyboard)
     
@@ -218,17 +202,26 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):   
     
     # Sending the response with the combined inline button
     await update.message.reply_text(response, reply_markup=combined_markup)
+
+    try:
+        # Unicraft Roadmap Inline button
+        if user_id in user_data:
+            user_data[user_id]["roadmap_presses"] = user_data[user_id].get("roadmap_presses", 0) + 1
+            collection.update_one({"_id": user_id}, {"$set": {"roadmap_presses": user_data[user_id]["roadmap_presses"]}})
+
+        # search_count Inline button
+        if user_id in user_data:
+            user_data[user_id]["search_count"] = user_data[user_id].get("search_count", 0) + 1
+            collection.update_one({"_id": user_id}, {"$set": {"search_count": user_data[user_id]["search_count"]}})
+
+        # Pollfish Survey Inline button
+        if user_id in user_data:
+            user_data[user_id]["survey_count"] = user_data[user_id].get("survey_count", 0) + 1
+            collection.update_one({"_id": user_id}, {"$set": {"survey_count": user_data[user_id]["survey_count"]}})
+    except Exception as e:
+        logger.error(f"Error updating user data: {e}")
     
-    # Incrementing the user's number of presses on the Unicraft Roadmap Inline button
-    if user_id in user_data:
-        user_data[user_id]["roadmap_presses"] = user_data[user_id].get("roadmap_presses", 0) + 1
-        collection.update_one({"_id": user_id}, {"$set": {"roadmap_presses": user_data[user_id]["roadmap_presses"]}})
-
-    # Incrementing the user's search count for data analysis
-    if user_id in user_data:
-        user_data[user_id]["search_count"] = user_data[user_id].get("search_count", 0) + 1
-        collection.update_one({"_id": user_id}, {"$set": {"search_count": user_data[user_id]["search_count"]}})
-
+    
 # Function to handle errors
 async def error(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logger.error(f"Update {update} caused error {context.error}")

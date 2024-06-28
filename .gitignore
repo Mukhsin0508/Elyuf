@@ -13,6 +13,36 @@
 *.xml
 
 
+# JSON DATA
+data/json_data/init-QS.json
+data/json_data/init-Times.json
+data/json_data/init-US&NEWS.json 
+
+# Google-Services
+eyuf-rag-427520-319f41429e2b.json
+
+
+# PDF_DATA
+rag/pdf_data/QS-2.pdf
+rag/pdf_data/THE.pdf
+rag/pdf_data/US&NEWS reytingi 2023-2.pdf
+rag/pdf_data/Kvota_2024.pdf
+rag/pdf_data/FAQ_101.pdf
+rag/pdf_data/eyuf_ariza_namuna.docx
+rag/pdf_data/esse_tavsiya.pdf
+rag/pdf_data/documents_uz.pdf
+rag/pdf_data/Baholash_uslubiyoti_2024.pdf
+rag/pdf_data/suhbat_dasturi.pdf
+rag/pdf_data/yangi_nizom.pdf
+
+
+
+
+# Scholarship Data
+rag/Scholarship_data/covered scholarships - Sheet1.pdf
+
+
+
 ### Database ###
 *.accdb
 *.db
