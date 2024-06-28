@@ -12,12 +12,18 @@ from langchain_core.prompts import (
     AIMessagePromptTemplate
 )
 
-import os 
+import os, logging
 import warnings
 import json 
 from google.oauth2 import service_account
 from dotenv import load_dotenv
 from rag.database import *
+
+# Logging setup
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
+logger = logging.getLogger(__name__) 
 
 warnings.filterwarnings("ignore", category=UserWarning, module="langchain.chains.llm")
 
@@ -27,14 +33,28 @@ load_dotenv()
 
 # Authenticate Google Cloud service account
 # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/mukhsinmukhtorov/Desktop/Elyuf/rag/google-services/eyuf-rag-427520-319f41429e2b.json"
-service_account_info = json.loads(os.getenv('GOOGLE_APPLICATION_CREDENTIALS'))
+# service_account_info = json.loads(os.getenv('GOOGLE_APPLICATION_CREDENTIALS'))
 
-# Ensure the env is loaded correctly 
-if service_account_info:
-    service_account_info = json.loads(service_account_info)
-    cridentials = service_account.Credentials.from_service_account_info(service_account_info)
-else:
-    raise ValueError(f"The GOOGLE_APPLICATION_CREDENTIALS environment variable is not set or empty")
+# Path to your service account JSON file
+service_account_info_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+
+if service_account_info_path is None:
+    raise ValueError('GOOGLE_APPLICATION_CREDENTIALS environment variable is not set.')
+
+try:
+    with open(service_account_info_path) as f:
+        service_account_info = json.load(f)
+except (FileNotFoundError, json.JSONDecodeError) as e:
+    print(f"Error loading Google Cloud credentials: {e}")
+    service_account_info = {}
+
+# Ensure service_account_info is not empty before using it
+if not service_account_info:
+    raise ValueError('Google Cloud credentials are not loaded or empty.')
+
+# Create credentials object
+credentials = service_account.Credentials.from_service_account_info(service_account_info)
+
 # heroku config:set GOOGLE_APPLICATION_CREDENTIALS="$(cat /Users/mukhsinmukhtorov/Desktop/Elyuf/rag/google-services/eyuf-rag-427520-319f41429e2b.json)" -a app-name/glacial-forest-46805
 # created an env in heroku for GOOGLE_APPLICATION_CREDENTIALS.
 
