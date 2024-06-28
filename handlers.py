@@ -139,14 +139,12 @@ If you're unsure about the correct spelling or official name of a university, do
 
 The system will not provide rankings based on specific locations or branches, so please only use the primary university name. 📊
     """
-    
-    # Creating an inline keyboard for Pollfish Survey
+
+    # Creating an inline keyboard for help bot!
     keyboard = [[InlineKeyboardButton("🤨 Get Help! 🆘", url="https://t.me/elyufhelpbot")]]
     help_markup = InlineKeyboardMarkup(keyboard)
-    
-    reply_markup = InlineKeyboardMarkup(reply_markup=help_markup)
-    
-    await update.message.reply_text(help_text, reply_markup)
+
+    await update.message.reply_text(help_text, reply_markup=help_markup)
 
 # Command to restart the bot
 async def restart_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
