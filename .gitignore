@@ -20,7 +20,7 @@ data/json_data/init-US&NEWS.json
 
 # Google-Services
 eyuf-rag-427520-319f41429e2b.json
-
+.pypirc
 
 # PDF_DATA
 rag/pdf_data/QS-2.pdf
