@@ -187,8 +187,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):   
 
     print("Bot:", response)
     
+    
+    # Creating telega.ai Inline Button for Affilitate program
+    
     # Creating an inline keyboard for Pollfish Survey
-    survey_keyboard = [[InlineKeyboardButton("💡✅ Take Survey 🚀🎯", url="https://wss.pollfish.com/link/3f802d5a-a567-42f8-9b53-c5f9826b74b6")]]
+    survey_keyboard = [[InlineKeyboardButton("💡✅ Take Survey 🚀🎯", url="https://wss.pollfish.com/link/16d14b3f-cdd1-4313-be52-d281b2ae3e6b")]]
     pollfish_markup = InlineKeyboardMarkup(survey_keyboard)
     
     # Created an inline for unicraft.uz as collabration request

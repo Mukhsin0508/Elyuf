@@ -139,7 +139,6 @@ elyufranks/
 # IDE-specific files
 .vscode/
 .idea/
-.env
 
 # Local development settings
 *.sqlite3
@@ -157,7 +156,6 @@ db.sqlite3
 /pip-wheel-metadata/
 
 # Environment variables
-.env
 .env.local
 .env.development
 .env.test

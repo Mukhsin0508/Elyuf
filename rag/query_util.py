@@ -58,6 +58,17 @@ embeddings = VertexAIEmbeddings(
     model_name="text-embedding-004"
 )
 
+# Initialize conversation history
+conversation_history = []
+
+def update_conversation_history(new_entry):
+    global conversation_history
+    conversation_history.append(new_entry)
+    # Limit the conversation history to a reasonable length
+    if len(conversation_history) > 10:  # Adjust the length as needed
+        conversation_history = conversation_history[-10:]
+
+
 # Instantiate MongoDBAtlasVectorSearch
 vector_search = MongoDBAtlasVectorSearch(
     embedding=embeddings,
@@ -67,26 +78,31 @@ vector_search = MongoDBAtlasVectorSearch(
     embedding_key="embedding"
 )
 
-# Define a promt for the system 
+# System prompt template with conversation history
 system_promt = (
-    """
-   You are an assistant specializing in answering questions about the Top 300 University Rankings accepted by the El-Yurt Umidi Foundation of Uzbekistan. 
-   If you can’t find the university rankings or even the name in the database, politely inform the user that the university is most likely not in the top 300 universities list of the EYUF Foundation.
+"""
+Answer the following questions as best you can. You have access to the following tools: {tools}
 
-Please remember:
+Use the following format:
 
-	•	You are only supposed to know the rankings for universities within the 2024 top 300 list accepted by EYUF.
-	•	It is perfectly fine to admit when you don’t have information.
+Question: the specific inquiry related to customer interaction or sales data you must answer, leveraging your knowledge as a social media manager assistant.
+Thought: consider the most relevant information from the user's company services, such as Outsourcing Services, Chief Financial Officers, and Financial Consulting, to ensure precise and pertinent responses.
+Action: the action to take should be retrieving or generating the necessary information accurately and reliably, possibly using tools like {get_vector_search}.
+Action Input: the specific data or query needed to retrieve or augment information based on verified company details.
+Observation: the result of the action, ensuring only accurate and verified information is used.
+... (this Thought/Action/Action Input/Observation can repeat N times)
+Thought: After analyzing the information, conclude the best approach to address the customer's needs or enhance the sales strategy, without mentioning the use of contextual data.
+Final Answer: the direct and relevant answer to the original input question, utilizing the knowledge of the company's services.
 
-When providing answers, follow this format:
+Begin!
 
-	•	Greet the user first!
-	•	QS World University Rank: [rank]
-	•	Times Higher Education Rank: [rank]
-	•	US News & World Report Rank: [rank]
+Previous Conversation:
+{conversation_history}
 
-Occasionally, ask if there are any other universities they would like to know about, and use some emojis to make the interaction friendly and engaging.
-    """
+Current Question:
+Question: {input}
+Thought: {agent_scratchpad}
+"""
     "\n\n"
     "{context}"
 )
@@ -94,7 +110,7 @@ Occasionally, ask if there are any other universities they would like to know ab
 # Initialize Gemini AI model 
 llm = ChatVertexAI(
     model_name="gemini-1.5-pro-001",
-    maxOutputTokens=500,  # The maximum number of tokens to generate in the response
+    maxOutputTokens=1000,  # The maximum number of tokens to generate in the response
     temperature=0.5,  # The temperature parameter controls the randomness of the output — the higher the value, the more random the output
     topP=0.9, # The topP parameter controls the diversity of the output — the higher the value, the more diverse the output
     topK=20, # The topK parameter controls the diversity of the output — the higher the value, the more diverse the output
@@ -121,8 +137,6 @@ question_answer_chain = create_stuff_documents_chain(llm, promt)
 
 # Create the retrieval chain using the compression retriever
 rag_chain = create_retrieval_chain(compression_retriever, question_answer_chain)
-
-rag_chain = create_retrieval_chain( compression_retriever, question_answer_chain)
 
 # Instantiate query_engine
 def query_index(query):
