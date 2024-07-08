@@ -6,3 +6,27 @@ This bot has been created independently for the El-Yurt Umidi Foundation for eas
 
 ```bash
 pip install elyuf
+
+
+Usage
+
+import elyuf
+
+# Example usage
+
+Features
+
+	•	Feature 1
+	•	Feature 2
+	•	Feature 3
+
+
+Contributing
+
+Contributions are welcome! Please fork this repository and submit pull requests.
+
+
+License
+
+This project is licensed under the MIT License - see the LICENSE file for details. # LICENSE
+

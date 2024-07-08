@@ -14,6 +14,7 @@ colorama==0.4.6
 dataclasses-json==0.6.7
 dnspython==2.6.1
 docstring_parser==0.16
+docutils==0.21.2
 fastapi==0.110.3
 frozenlist==1.4.1
 git-filter-repo==2.38.0
@@ -36,10 +37,15 @@ h11==0.14.0
 httpcore==1.0.5
 httpx==0.27.0
 idna==3.7
+importlib_metadata==8.0.0
+jaraco.classes==3.4.0
+jaraco.context==5.3.0
+jaraco.functools==4.0.1
 jsonpatch==1.33
 jsonpointer==3.0.0
 jsonschema==4.22.0
 jsonschema-specifications==2023.12.1
+keyring==25.2.1
 langchain==0.2.5
 langchain-cli==0.0.25
 langchain-community==0.2.5
@@ -53,11 +59,14 @@ libcst==1.4.0
 markdown-it-py==3.0.0
 marshmallow==3.21.3
 mdurl==0.1.2
+more-itertools==10.3.0
 multidict==6.0.5
 mypy-extensions==1.0.0
+nh3==0.2.17
 numpy==1.26.4
 orjson==3.10.5
 packaging==24.1
+pkginfo==1.10.0
 proto-plus==1.24.0
 protobuf==4.25.3
 pyasn1==0.6.0
@@ -72,8 +81,11 @@ python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 python-telegram-bot==21.3
 PyYAML==6.0.1
+readme_renderer==43.0
 referencing==0.35.1
 requests==2.32.3
+requests-toolbelt==1.0.0
+rfc3986==2.0.0
 rich==13.7.1
 rpds-py==0.18.1
 rsa==4.9
@@ -92,6 +104,7 @@ telebot==0.0.5
 tenacity==8.4.2
 toml==0.10.2
 tomlkit==0.12.5
+twine==5.1.1
 typer==0.9.4
 typing-inspect==0.9.0
 typing_extensions==4.12.2
@@ -99,3 +112,4 @@ urllib3==2.2.1
 uvicorn==0.23.2
 wheel==0.43.0
 yarl==1.9.4
+zipp==3.19.2
