@@ -17,7 +17,6 @@ RUN pip install --upgrade pip
 RUN apt-get update && \
     apt-get install -y --no-install-recommends build-essential g++ && \
     apt-get clean \
-    # Set the C++ standard to C++14 \
 
 ENV CFLAGS="-std=c++14"
 ENV CXXFLAGS="-std=c++14"
