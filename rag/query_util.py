@@ -17,7 +17,7 @@ import warnings
 import json 
 from google.oauth2 import service_account
 from dotenv import load_dotenv
-from rag.database import *
+from rag.mongodb_database import *
 
 # Logging setup
 logging.basicConfig(
@@ -32,18 +32,18 @@ load_dotenv()
 
 
 # Authenticate Google Cloud service account
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/app/gcp_key.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "rag/google-services/eyuf-rag-427520-319f41429e2b.json"
 
 
 service_account_info=os.getenv('GOOGLE_CREDENTIALS')
 
-# Ensure the env is loaded correctly 
-if service_account_info:
-    service_account_info = json.loads(service_account_info)
-    cridentials = service_account.Credentials.from_service_account_info(service_account_info)
-else:
-    raise ValueError(f"The GOOGLE_APPLICATION_CREDENTIALS environment variable is not set or empty")
-    
+# # Ensure the env is loaded correctly
+# if service_account_info:
+#     service_account_info = json.loads(service_account_info)
+#     credentials = service_account.Credentials.from_service_account_info( service_account_info )
+# else:
+#     raise ValueError(f"The GOOGLE_APPLICATION_CREDENTIALS environment variable is not set or empty")
+#
 
 # heroku config:set GOOGLE_APPLICATION_CREDENTIALS="$(cat /gcp_key.json)" -a app-name/glacial-forest-46805
 # created an env in heroku for GOOGLE_APPLICATION_CREDENTIALS.
@@ -53,7 +53,7 @@ client = client
 db = db
 COLLECTION_NAME = collection
 
-# Instantiate VertexAIEmbeddings
+# Instantiate VertexAI Embeddings
 embeddings = VertexAIEmbeddings(
     model_name="text-embedding-004"
 )
@@ -67,8 +67,8 @@ vector_search = MongoDBAtlasVectorSearch(
     embedding_key="embedding"
 )
 
-# Define a promt for the system 
-system_promt = (
+# Define a prompt for the system
+system_prompt = (
     """
    You are an assistant specializing in answering questions about the Top 300 University Rankings accepted by the El-Yurt Umidi Foundation of Uzbekistan. 
    If you can’t find the university rankings or even the name in the database, politely inform the user that the university is most likely not in the top 300 universities list of the EYUF Foundation.
@@ -108,16 +108,16 @@ compression_retriever = ContextualCompressionRetriever(
 )
 
 
-# Creating the chat promt template 
-promt = ChatPromptTemplate.from_messages(
+# Creating the chat prompt template
+prompt = ChatPromptTemplate.from_messages(
     [
-        SystemMessagePromptTemplate.from_template(system_promt),
+        SystemMessagePromptTemplate.from_template( system_prompt ),
         HumanMessagePromptTemplate.from_template("{input}")
     ]
 )
 
 # Create the question-answer chain 
-question_answer_chain = create_stuff_documents_chain(llm, promt)
+question_answer_chain = create_stuff_documents_chain( llm , prompt )
 
 # Create the retrieval chain using the compression retriever
 rag_chain = create_retrieval_chain(compression_retriever, question_answer_chain)

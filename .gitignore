@@ -12,6 +12,10 @@
 *.vcf
 *.xml
 
+dist/
+build/
+*.egg-info/
+.env
 
 # JSON DATA
 data/json_data/init-QS.json
@@ -23,23 +27,23 @@ eyuf-rag-427520-319f41429e2b.json
 .pypirc
 
 # PDF_DATA
-rag/pdf_data/QS-2.pdf
-rag/pdf_data/THE.pdf
-rag/pdf_data/US&NEWS reytingi 2023-2.pdf
-rag/pdf_data/Kvota_2024.pdf
-rag/pdf_data/FAQ_101.pdf
-rag/pdf_data/eyuf_ariza_namuna.docx
-rag/pdf_data/esse_tavsiya.pdf
-rag/pdf_data/documents_uz.pdf
-rag/pdf_data/Baholash_uslubiyoti_2024.pdf
-rag/pdf_data/suhbat_dasturi.pdf
-rag/pdf_data/yangi_nizom.pdf
+data/pdf_data/QS-2.pdf
+data/pdf_data/THE.pdf
+data/pdf_data/US&NEWS reytingi 2023-2.pdf
+data/pdf_data/Kvota_2024.pdf
+data/pdf_data/FAQ_101.pdf
+data/pdf_data/eyuf_ariza_namuna.docx
+data/pdf_data/esse_tavsiya.pdf
+data/pdf_data/documents_uz.pdf
+data/pdf_data/Baholash_uslubiyoti_2024.pdf
+data/pdf_data/suhbat_dasturi.pdf
+data/pdf_data/yangi_nizom.pdf
 
 
 
 
 # Scholarship Data
-rag/Scholarship_data/covered scholarships - Sheet1.pdf
+data/Scholarship_data/covered scholarships - Sheet1.pdf
 
 
 

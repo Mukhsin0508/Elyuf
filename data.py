@@ -1,6 +1,9 @@
 import json
 
 def load_data():
+    """Load data from JSON files.
+    This file's code is used for loading data from JSON files in the data directory.
+    but it is not used in the current implementation as the data is loaded from the database MongoDB."""
     try:
         with open("data/init-QS.json") as qs_file:
             qs_data = json.load(qs_file)["data"]

@@ -7,7 +7,7 @@ from langchain.schema import Document
 import os
 import json
 from dotenv import load_dotenv
-from database import *
+from mongodb_database import *
 
 # Load environment variables
 load_dotenv()

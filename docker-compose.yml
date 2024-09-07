@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  web:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    command: >
+        sh -c "python4 main.py"
+    restart: on-failure
+    volumes:
+        - .:/app
+    env_file:
+        - .env
+    ports:
+        - "8080:8080"
+
+
+  cadvisor:
+      image: gcr.io/cadvisor/cadvisor
+      privileged: true
+      volumes:
+          - /:/rootfs:ro
+          - /var/run:/var/run:rw
+          - /sys:/sys:ro
+          - /var/lib/docker/:/var/lib/docker:ro
+      ports:
+          - "5555:5555"
+      restart: unless-stopped

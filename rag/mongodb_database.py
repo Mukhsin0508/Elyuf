@@ -39,15 +39,15 @@ if __name__ == "__main__":
 
 
 # For Atlas Cluster Vector Search Configurations
-    """
-    {
-  "fields": [
-    {
-      "type": "vector",
-      "path": "embedding",
-      "numDimensions": 768,
-      "similarity": "cosine" or "euclidean" 
-    }
-  ]
-}
-    """
+#     """
+#     {
+#   "fields": [
+#     {
+#       "type": "vector",
+#       "path": "embedding",
+#       "numDimensions": 768,
+#       "similarity": "cosine" or "euclidean" 
+#     }
+#   ]
+# }
+#     """

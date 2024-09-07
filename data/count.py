@@ -6,6 +6,8 @@ load_dotenv()
 
 # Function to load JSON data
 def load_json_data(file_path):
+    """Count the number of universities in a JSON file. Not used in the current implementation. only once used during
+    the development of the project in the data directory."""
     with open(file_path, 'r', encoding="utf-8") as file:
         return json.load(file)
 

@@ -1,14 +1,18 @@
-import os 
+import os
 import dotenv 
 from telegram.ext import CommandHandler, ConversationHandler, MessageHandler, filters, Application
-from handlers import start_command, name, phone, admin_password, help_command, restart_command, handle_message, error, NAME, PHONE, ADMIN
+from telegram_src.handlers import start_command, name, phone, admin_password, help_command, restart_command, handle_message, \
+    error, NAME, PHONE, ADMIN
 
 
 dotenv.load_dotenv()
 TOKEN = os.getenv("TOKEN")
 
 
-# Main function to start the bot
+# Main function to start the bot and add handlers, conversation handlers, and error handlers, and run the bot.
+# The bot will start polling for new messages.
+# The bot will respond to commands and messages from users.
+# This file is just like run.py in PastAPI
 if __name__ == "__main__":
     print("Starting bot...")
     app = Application.builder().token(TOKEN).build()
