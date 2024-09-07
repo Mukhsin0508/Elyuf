@@ -6,7 +6,7 @@ services:
         context: .
         dockerfile: Dockerfile
     command: >
-        sh -c "python4 main.py"
+        sh -c "python3 main.py"
     restart: on-failure
     volumes:
         - .:/app
